@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const API_URL = 'https://multivendorapp-products-microservice.onrender.com/';
+const API_URL = 'https://multivendorapp-products-microservice-bzzj.onrender.com/';
 
 export const fetchProducts = async (token) => {
   try {

@@ -14,7 +14,7 @@ const ProductDetail = () => {
   useEffect(() => {
     const fetchProductAndSellerDetails = async () => {
       try {
-        const productResponse = await fetch(`https://multivendorapp-products-microservice.onrender.com/${id}`, {
+        const productResponse = await fetch(`https://multivendorapp-products-microservice-bzzj.onrender.com/${id}`, {
           headers: { Authorization: `Bearer ${authState.token}` },
         });
         if (!productResponse.ok) {
@@ -25,7 +25,7 @@ const ProductDetail = () => {
 
         if (productData.seller) {
           try {
-            const sellerResponse = await fetch(`https://multivendorapp-user-service.onrender.com/product/seller/${productData.seller}`, {
+            const sellerResponse = await fetch(`https://multivendorapp-products-microservice-bzzj.onrender.com/product/seller/${productData.seller}`, {
               headers: { Authorization: `Bearer ${authState.token}` },
             });
             if (!sellerResponse.ok) {

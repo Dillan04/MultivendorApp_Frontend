@@ -13,7 +13,7 @@ const ProfileDetail = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('https://multivendorapp-user-service.onrender.com/profile', {
+        const response = await axios.get('https://multivendorapp-user-microservice.onrender.com/profile', {
           headers: {
             Authorization: `Bearer ${authState.token}`,
           },

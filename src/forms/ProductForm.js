@@ -46,7 +46,7 @@ const ProductForm = () => {
     if (id) {
       const fetchProduct = async () => {
         try {
-          const response = await axios.get(`https://multivendorapp-products-microservice.onrender.com/${id}`, {
+          const response = await axios.get(`https://multivendorapp-products-microservice-bzzj.onrender.com/${id}`, {
             headers: {
               Authorization: `Bearer ${authState.token}`,
             },
@@ -113,8 +113,8 @@ const handleImageUpload = async (event) => {
 
     try {
       const url = id
-        ? `https://multivendorapp-products-microservice.onrender.com/product/${id}`
-        : 'https://multivendorapp-products-microservice.onrender.com/product/create';
+        ? `https://multivendorapp-products-microservice-bzzj.onrender.com/product/${id}`
+        : 'https://multivendorapp-products-microservice-bzzj.onrender.com/product/create';
       const method = id ? 'PUT' : 'POST';
 
       const response = await axios({

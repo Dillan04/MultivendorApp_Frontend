@@ -19,7 +19,7 @@ const EditProfileForm = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('https://multivendorapp-user-service.onrender.com/profile', {
+        const response = await axios.get('https://multivendorapp-user-microservice.onrender.com/profile', {
           headers: {
             Authorization: `Bearer ${authState.token}`,
           },
@@ -57,7 +57,7 @@ const EditProfileForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.put('https://multivendorapp-user-service.onrender.com/profile', formData, {
+      const response = await axios.put('https://multivendorapp-user-microservice.onrender.com/profile', formData, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },

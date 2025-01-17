@@ -167,7 +167,7 @@ const Home = () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          'https://multivendorapp-user-service.onrender.com/profile',
+          'https://multivendorapp-user-microservice.onrender.com/profile',
           {
             headers: {
               Authorization: `Bearer ${authState.token}`,

@@ -30,7 +30,7 @@ const CreateProfileForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://multivendorapp-user-service.onrender.com/profile', formData, {
+      const response = await axios.post('https://multivendorapp-user-microservice.onrender.com/profile', formData, {
         headers: {
           Authorization: `Bearer ${authState.token}`,
         },
