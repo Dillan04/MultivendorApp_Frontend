@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
+
+// Import the background image
+import backgroundImage from './FRONTENDBG.jpg';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -43,14 +47,20 @@ const Register = () => {
   };
 
   return (
-    <section className="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-6">
+    <motion.section 
+      className="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-6"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
         <div className="text-center mb-6">
-          {/* <img
-            src="https://via.placeholder.com/150x50?text=Logo"
-            alt="Logo"
-            className="mx-auto w-24"
-          /> */}
           <h1 className="text-xl font-semibold text-gray-800 mt-4">Create your account</h1>
         </div>
 
@@ -139,7 +149,7 @@ const Register = () => {
           </p>
         </form>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

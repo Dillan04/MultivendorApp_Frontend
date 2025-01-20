@@ -10,6 +10,20 @@ import {
   ArrowRightIcon,
 } from 'lucide-react';
 import Cart from '../lists/Cart';
+import bgImage from './FRONTENDBG.jpg'; // Importing the background image
+
+const pageVariants = {
+  hidden: { opacity: 0, x: '-100vw' },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 50,
+      damping: 20,
+    },
+  },
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -67,86 +81,33 @@ const FeatureCard = ({ icon, title, description, linkTo, linkText }) => (
 const LoggedOutHome = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-gradient-to-r from-orange-500 to-white text-black flex items-center justify-center"
+      initial="hidden"
+      animate="visible"
+      variants={pageVariants}
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="bg-white rounded-lg p-8 shadow-lg max-w-xl w-full text-center">
-        <motion.h1
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ type: 'spring', stiffness: 100 }}
-          className="text-4xl font-extrabold mb-6 text-orange-600"
-        >
+        <h1 className="text-4xl font-extrabold mb-6 text-orange-600">
           Welcome to Dee-N
-        </motion.h1>
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
-          className="text-lg text-gray-600 max-w-2xl mx-auto mb-10"
-        >
+        </h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
           Making everything happen for you. Join in and buy anything you love.
-        </motion.p>
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                delayChildren: 0.3,
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-          className="flex justify-center space-x-6"
-        >
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  type: 'spring',
-                  damping: 12,
-                  stiffness: 100,
-                },
-              },
-            }}
+        </p>
+        <div className="flex justify-center space-x-6">
+          <Link
+            to="/login"
+            className="flex items-center gap-2 px-8 py-3 bg-orange-600 text-white rounded-lg transition hover:bg-orange-700"
           >
-            <Link
-              to="/login"
-              className="flex items-center gap-2 px-8 py-3 bg-orange-600 text-white rounded-lg transition hover:bg-orange-700"
-            >
-              Log In <ArrowRightIcon size={20} />
-            </Link>
-          </motion.div>
-          <motion.div
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: {
-                y: 0,
-                opacity: 1,
-                transition: {
-                  type: 'spring',
-                  damping: 12,
-                  stiffness: 100,
-                },
-              },
-            }}
+            Log In <ArrowRightIcon size={20} />
+          </Link>
+          <Link
+            to="/register"
+            className="flex items-center gap-2 px-8 py-3 bg-gray-200 text-black rounded-lg transition hover:bg-gray-300"
           >
-            <Link
-              to="/register"
-              className="flex items-center gap-2 px-8 py-3 bg-gray-200 text-black rounded-lg transition hover:bg-gray-300"
-            >
-              Sign Up <ArrowRightIcon size={20} />
-            </Link>
-          </motion.div>
-        </motion.div>
+            Sign Up <ArrowRightIcon size={20} />
+          </Link>
+        </div>
       </div>
     </motion.div>
   );
@@ -210,7 +171,13 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={pageVariants}
+      className="min-h-screen bg-cover bg-center"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
       <div className="container mx-auto px-6 py-12">
         <h1 className="text-4xl font-bold text-center mb-8 text-orange-600">
           Welcome to Dee-N Shop, {profile?.name || 'User'}!
@@ -259,7 +226,7 @@ const Home = () => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

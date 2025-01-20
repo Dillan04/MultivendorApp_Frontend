@@ -8,6 +8,17 @@ import {
   LogInIcon 
 } from 'lucide-react';
 
+// Import the image from the same directory
+import backgroundImage from './FRONTENDBG.jpg';
+
+const pageVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1, 
+    transition: { duration: 0.8, ease: 'easeOut' } 
+  },
+};
+
 const Login = () => {
   const { login } = useAuth();
   const [email, setEmail] = useState('');
@@ -50,14 +61,20 @@ const Login = () => {
   };
 
   return (
-    <section className="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-6">
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={pageVariants}
+      className="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-6"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="w-full max-w-sm bg-white rounded-lg shadow-md p-6 space-y-4 border border-gray-200">
         <div className="text-center mb-4">
-          {/* <img
-            src="https://drive.google.com/file/d/1qWOccD6NnbwTy66rqSr2j9BeAgd_UJMz/view?usp=drive_link"
-            alt="Logo"
-            className="w-28 mx-auto"
-          /> */}
           <h1 className="text-xl font-semibold text-gray-800 mt-2">Sign In to Your Account</h1>
         </div>
 
@@ -75,7 +92,6 @@ const Login = () => {
         </AnimatePresence>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email Input */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email Address</label>
             <input
@@ -88,7 +104,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
             <input
@@ -101,7 +116,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-orange-500 text-white py-2 rounded-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -116,7 +130,7 @@ const Login = () => {
           </p>
         </form>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
